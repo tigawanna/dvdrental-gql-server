@@ -1,9 +1,19 @@
-# Mongo Project
-Simple Nodejs + Express + Typescript + MongoDB project for aggregating a user'sprojects i=on github based on thier package.jsons (Javascript/Typscript only )
+# DVD rental GraphQL API
 
-```sh
-/github : to get the aggregated data,
+built with
+- nodejs
+- express
+- typescript
+- apollo-server-express
+- graphql
+- type-graphql
+- typeorm
+- pg
 
-/github/batch_create : to populate the MongoDB database with the package.jsons
-/github/batch_update : to update the MongoDB database with the package.jsons (will be exscuted on a daily cronjob )
-```
+## Resources 
+- [dvddrental seed data](https://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip)
+- [Apollo Server Docs](https://www.apollographql.com/docs/apollo-server/)
+- [GraphQL Docs](https://www.apollographql.com/docs)
+- [TypeORM Docs](https://typeorm.io)
+- [TypeGraphQL Docs](https://typegraphql.com)
+- [TypeORM Docs](https://typeorm.io)
