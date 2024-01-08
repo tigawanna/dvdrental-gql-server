@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import  cors  from 'cors';
 import { logError, logNormal, logSuccess } from "./utils/helpers";
+import { AppDataSource } from "./typeorm";
 
 const PORT = 5000;
 
@@ -31,10 +32,21 @@ const startServer = async () => {
     res.json({ message: "Hello World!" });
   });
 
+  AppDataSource.initialize()
+    .then(() => {
+      console.log("Data Source has been initialized!")
+      app.listen(port, () => {
+        logNormal(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+      });
+    })
+    .catch((err) => {
+      console.error("Error during Data Source initialization", err)
+    })
+    .finally(() => {
+      console.log("destroying typeorm data source instance")
+      AppDataSource.destroy()
+    })
 
 
-  app.listen(port, () => {
-  logNormal(`⚡️[server]: Server is running at http://localhost:${PORT}`);
-  });
 };
 startServer().catch((e) => logError("error starting server======== ", e));
