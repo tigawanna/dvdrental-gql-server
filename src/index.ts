@@ -2,7 +2,7 @@ import 'reflect-metadata'
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import cors from 'cors';
-import { logError, logNormal } from "./utils/helpers";
+import { logError, logNormal, logWarning } from "./utils/helpers";
 import { AppDataSource } from "./typeorm";
 import { ApolloServer } from 'apollo-server-express'
 import { buildSchema } from 'type-graphql'
@@ -53,6 +53,7 @@ const startServer = async () => {
     apolloServer.applyMiddleware({ app, cors: corsOptions });
     app.listen(port, () => {
       logNormal(`⚡️[server]: Server is running at http://localhost:${PORT}`);
+      logWarning(`⚡️[server]: Graphql Server is running at http://localhost:${PORT}/graphql`);
     });
     console.log("Data Source has been initialized!")
   })
